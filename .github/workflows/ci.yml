@@ -8,11 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Install Python Library and Execute
         run: |
           pip3 install -r ./requirements.txt
           python3 main.py
+        env:
+          UNSPLASH_API_KEY: ${{secrets.UNSPLASH_API_KEY}}
+          CWA_API_KEY: ${{secrets.CWA_API_KEY}}
 
       - name: LINE Notify Actions
         uses: louis70109/line-notify-action@v0.2.0
