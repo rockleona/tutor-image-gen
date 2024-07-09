@@ -1,0 +1,6 @@
+output/*.png
+wireframe/
+download/
+__pycache__/
+
+.env
