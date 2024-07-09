@@ -152,7 +152,7 @@ if __name__ == "__main__":
                 weather_data_box.line((550, 260 + 170 * order, 1800, 260 + 170 * order))
                 weather_data_box.line((100, 260 + 170 * order, 300, 260 + 170 * order))
 
-            filename = f"20240404_{index}.png"
+            filename = f"result.png"
             weather_image.save(filename)
 
     else:

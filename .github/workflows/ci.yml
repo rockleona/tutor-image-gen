@@ -21,5 +21,7 @@ jobs:
         uses: louis70109/line-notify-action@v0.2.0
         with:
           token: ${{ secrets.LINE_NOTIFY_TOKEN }}
-          message: 'LINE Notify test message'
-                  
+          message: |
+            ${{github.repository}} 傳來了最新的天氣預報。
+          image_file: result.png
+                        
