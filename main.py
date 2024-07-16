@@ -1,6 +1,7 @@
 import imager
 import weather
 from PIL import Image, ImageDraw, ImageFont  # 編輯照片用
+from googletrans import Translator
 
 title_dict = {
     # "日期": [760, 160],
@@ -9,19 +10,6 @@ title_dict = {
     "降雨": [1460, 160],
     "舒適度": [1710, 160],
 }
-
-def gen_weather_keyword(weather):
-    weather_dict = {
-        '多雲': 'partly cloudy',
-        '多雲時陰': 'mostly cloudy',
-        '多雲時陰短暫陣雨': 'Mostly cloudy and short rain',
-        '多雲時晴': 'partly clear',
-        '陰短暫陣雨或雷雨': 'Cloudy and short rain with thunder',
-        '晴時多雲': 'Sunny but cloudy'
-    }
-
-    return f"weather {weather_dict[weather]}"
-
 
 if __name__ == "__main__":
 
@@ -48,8 +36,10 @@ if __name__ == "__main__":
             date_dict['datetime'].append(
                 [item['endTime'][8:10], item['endTime'][11:-3]])
 
+    translator = Translator()
+    translated_keyword = translator.translate(weather_list[0]["Wx"],  dest='zh-TW')
     background_list = imager.getBackground(
-        weather=gen_weather_keyword(weather_list[0]["Wx"]), count=1)
+        weather=translated_keyword.text, count=1)
 
     if background_list is not None:
         noto_serif = ImageFont.truetype(

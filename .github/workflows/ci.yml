@@ -2,6 +2,8 @@ name: Genarate Image and send to Line Notify
 
 on:
   push:
+  schedule:
+    - cron: '5 6,18 * * *'
 
 jobs:
   ci:
@@ -24,4 +26,3 @@ jobs:
           message: |
             ${{github.repository}} 傳來了最新的天氣預報。
           image_file: result.png
-                        
